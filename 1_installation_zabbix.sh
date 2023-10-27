@@ -34,7 +34,7 @@ sudo mysql
 # sudo zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | sudo mysql -uzabbix -p zabbix
 sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
 
-mysql -uroot -p
+mysql -u root -p
 # set global log_bin_trust_function_creators = 0;
 # quit;
 
