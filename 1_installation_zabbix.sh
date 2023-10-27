@@ -14,23 +14,25 @@ sudo systemctl start apache2
 sudo systemctl start mysql
 
 # Descarga e importa el esquema de base de datos de Zabbix
-wget https://repo.zabbix.com/zabbix/5.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.0-1+ubuntu20.04_all.deb
-sudo dpkg -i zabbix-release_5.0-1+ubuntu20.04_all.deb
+sudo wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+sudo dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
 sudo apt update
-sudo apt install -y zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+sudo apt install -y zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
 # Configura la base de datos Zabbix en MySQL
 sudo mysql
 
 # Entra en el entorno de MySQL
-CREATE DATABASE zabbix character set utf8 collate utf8_bin;
-CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'root';
-GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
-FLUSH PRIVILEGES;
-EXIT;
+# CREATE DATABASE zabbix character set utf8 collate utf8_bin;
+# CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'root';
+# GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
+# set global log_bin_trust_function_creators = 1;
+# FLUSH PRIVILEGES;
+# EXIT;
 
 # Importa el esquema de la base de datos de Zabbix
-sudo zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | sudo mysql -uzabbix -p zabbix
+# sudo zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | sudo mysql -uzabbix -p zabbix
+sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
 
 # Edita el archivo de configuración de Zabbix Server
 sudo nano /etc/zabbix/zabbix_server.conf
