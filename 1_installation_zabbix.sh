@@ -24,7 +24,7 @@ sudo mysql
 
 # Entra en el entorno de MySQL
 # CREATE DATABASE zabbix character set utf8 collate utf8_bin;
-# CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'root';
+# CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'zabbix';
 # GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
 # set global log_bin_trust_function_creators = 1;
 # FLUSH PRIVILEGES;
@@ -34,11 +34,15 @@ sudo mysql
 # sudo zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | sudo mysql -uzabbix -p zabbix
 sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
 
+mysql -uroot -p
+# set global log_bin_trust_function_creators = 0;
+# quit;
+
 # Edita el archivo de configuración de Zabbix Server
 sudo nano /etc/zabbix/zabbix_server.conf
 
 # Ajusta la contraseña de la base de datos
-# DBPassword=tu_contrasena
+# DBPassword=zabbix
 
 # Reinicia el servidor Zabbix
 sudo systemctl restart zabbix-server zabbix-agent apache2
