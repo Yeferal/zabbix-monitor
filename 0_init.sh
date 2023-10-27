@@ -1,3 +1,3 @@
 # !/bin/bash
 
-chmod +x '1-installation-zabbix.sh'
+chmod +x '1_installation_zabbix.sh'
