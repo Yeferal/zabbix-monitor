@@ -1,4 +1,5 @@
 # zabbix-monitor
+[Install Zabbix Documentation](https://www.zabbix.com/download?zabbix=6.4&os_distribution=ubuntu&os_version=22.04&components=server_frontend_agent&db=mysql&ws=apache)
 * Si es necesario dar permiso de uso al archivo **1_installation_zabbix.sh** ejecutando el archivo **0_init.sh**
 * Para instalar y configurar zabbix ejecutar el bash **1_installation_zabbix.sh**
 
