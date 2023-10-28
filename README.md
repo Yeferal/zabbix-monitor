@@ -22,6 +22,52 @@ set global log_bin_trust_function_creators = 0;
 ```
 DBPassword=zabbix
 ```
+# Agente Zabbix (Para host)
+Accede al host: Conéctate al host en el que deseas instalar el agente de Zabbix a través de SSH o mediante acceso físico
+
+* Si estás utilizando un sistema basado en Debian/Ubuntu, puedes usar el siguiente comando
+
+    ```
+    sudo apt-get update
+    sudo apt-get install zabbix-agent
+    ```
+* Si estás utilizando un sistema basado en Red Hat/CentOS, puedes usar el siguiente comando
+
+    ```
+    sudo yum install zabbix-agent
+    ```
+
+## Configura el agente de Zabbix
+
+El archivo de configuración principal del agente de Zabbix se llama zabbix_agentd.conf. Puedes encontrarlo en la ubicación /etc/zabbix/. Edita este archivo según tus necesidades. Algunas de las configuraciones clave incluyen el servidor al que se conectará el agente, el nombre del host, el puerto y otros ajustes de seguridad.
+
+```
+sudo nano /etc/zabbix/zabbix_agentd.conf
+```
+
+Ejemplo:
+
+Agrega las siguientes configuraciones para habilitar el monitoreo de interfaces. Asegúrate de que estas configuraciones reflejen tus necesidades y la interfaz que deseas monitorear. En el ejemplo siguiente, asumimos que estás monitoreando la interfaz de red "eth0":
+
+```
+# Dirección IP o nombre del servidor Zabbix
+Server=nombre_o_IP_del_servidor_Zabbix
+
+# Puerto del servidor Zabbix
+ServerPort=10051
+
+# Nombre del host (tal como se configuró en el servidor Zabbix)
+Hostname=nombre_del_host_en_Zabbix
+
+# Incluir la plantilla de interfaz
+Include=/etc/zabbix/zabbix_agentd.conf.d/
+```
+
+* Inicia y habilita el servicio del agente de Zabbix
+```
+sudo systemctl start zabbix-agent
+sudo systemctl enable zabbix-agent
+```
 
 ## Agregar Host
 
