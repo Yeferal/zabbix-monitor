@@ -18,6 +18,7 @@
 
 ```
 set global log_bin_trust_function_creators = 0;
+EXIT;
 ```
 4. Ajusta la contraseña de la base de datos archivo **/etc/zabbix/zabbix_server.conf**
 ```
