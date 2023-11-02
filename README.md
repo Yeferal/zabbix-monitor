@@ -53,16 +53,11 @@ Agrega las siguientes configuraciones para habilitar el monitoreo de interfaces.
 
 ```
 # Dirección IP o nombre del servidor Zabbix
-Server=nombre_o_IP_del_servidor_Zabbix
-
-# Puerto del servidor Zabbix
-ServerPort=10051
+Server=IP_del_servidor_Zabbix
 
 # Nombre del host (tal como se configuró en el servidor Zabbix)
 Hostname=nombre_del_host_en_Zabbix
 
-# Incluir la plantilla de interfaz
-Include=/etc/zabbix/zabbix_agentd.conf.d/
 ```
 
 * Inicia y habilita el servicio del agente de Zabbix
