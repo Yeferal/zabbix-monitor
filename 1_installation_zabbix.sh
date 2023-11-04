@@ -14,8 +14,15 @@ sudo systemctl start apache2
 sudo systemctl start mysql
 
 # Descarga e importa el esquema de base de datos de Zabbix
-sudo wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
-sudo dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
+
+# Para ubuntu
+# sudo wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+# sudo dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
+
+# Para debian 12
+sudo wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_6.0-5+debian12_all.deb
+sudo dpkg -i zabbix-release_6.0-5+debian12_all.deb
+
 sudo apt update
 sudo apt install -y zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
